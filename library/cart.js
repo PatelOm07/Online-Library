@@ -71,8 +71,11 @@ document.addEventListener("DOMContentLoaded", function () {
                         item.prn = prn;
                     });
 
+                    // Determine the base URL based on environment
+                    var baseURL = window.location.hostname === "localhost" ? "http://localhost:5000" : "https://online-library-one.vercel.app";
+
                     // Send a POST request to the server to issue cart items
-                    var response = await fetch('http://localhost:5000/issue', {
+                    var response = await fetch(baseURL + '/issue', {
                         method: 'POST',
                         headers: {
                             'Content-Type': 'application/json',
